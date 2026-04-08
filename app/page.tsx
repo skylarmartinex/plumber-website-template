@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import {
-  Phone, CheckCircle, Star, MapPin, Users, Clock, DollarSign, Award,
+  Phone, CalendarDays, Star, MapPin, DollarSign, ShieldCheck,
+  BadgeCheck, Wrench,
 } from 'lucide-react'
 import { businessConfig } from '@/config/business'
 import { ServiceCard } from '@/components/ServiceCard'
 import { TestimonialCard } from '@/components/TestimonialCard'
-import { CTAButton } from '@/components/CTAButton'
+import { FAQ } from '@/components/FAQ'
 
 export const metadata: Metadata = {
   title: `${businessConfig.name} — ${businessConfig.tagline}`,
@@ -15,110 +15,180 @@ export const metadata: Metadata = {
 }
 
 const whyChooseUs = [
-  { icon: Users, title: 'Family Owned & Operated', desc: 'Local family business serving our community for over ' + businessConfig.yearsInBusiness + ' years.' },
-  { icon: Award, title: businessConfig.yearsInBusiness + '+ Years Experience', desc: 'Thousands of happy customers and every type of plumbing problem solved.' },
-  { icon: Clock, title: 'Same-Day Service', desc: 'Most service calls scheduled same day. Emergency response in under 60 minutes.' },
-  { icon: DollarSign, title: 'Upfront Pricing', desc: 'Get a clear price before we start. No hidden fees. No surprise bills.' },
-]
-
-const howItWorks = [
-  { step: '1', title: 'Call or Book Online', desc: 'Call us anytime or submit a request online. We confirm your appointment fast — often same day.' },
-  { step: '2', title: 'We Diagnose & Quote', desc: 'Our plumber arrives, finds the problem, and gives you a clear upfront price before any work begins.' },
-  { step: '3', title: 'We Fix It — Guaranteed', desc: 'We complete the repair cleanly and professionally. Every job is backed by our satisfaction guarantee.' },
+  {
+    icon: DollarSign,
+    title: 'Upfront Flat Rate Pricing',
+    desc: 'No surprises. We give you a clear price before any work begins — and we stick to it.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Licensed & Insured',
+    desc: 'Every technician is fully licensed, insured, and background-checked for your peace of mind.',
+  },
+  {
+    icon: BadgeCheck,
+    title: 'Satisfaction Guaranteed',
+    desc: "If you're not 100% satisfied with our work, we'll make it right. No questions asked.",
+  },
+  {
+    icon: Wrench,
+    title: 'Residential & Commercial',
+    desc: 'From single-family homes to commercial properties — we handle it all, any size job.',
+  },
 ]
 
 export default function HomePage() {
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
-      <section className="relative bg-primary-dark overflow-hidden min-h-[580px] flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/98 via-primary-dark/85 to-primary/50 z-10" />
+      <section className="relative overflow-hidden min-h-[620px] flex items-center">
+        {/* Background image */}
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-25"
+          className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/hero-bg.jpg')" }}
         />
+        {/* Dark blue overlay — matches Mr. Rooter's deep navy over image */}
+        <div className="absolute inset-0 bg-primary-deeper/85" />
 
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left: Headline */}
+
+            {/* Left: Headline + CTAs */}
             <div>
-              <div className="inline-flex items-center gap-2 bg-gold/20 border border-gold/40 text-gold text-sm font-bold px-3 py-1 rounded-full mb-5">
-                <span className="w-2 h-2 bg-gold rounded-full animate-pulse" />
-                {businessConfig.hours.emergency}
+              {/* Review stars */}
+              <div className="flex items-center gap-2 mb-5">
+                <div className="flex gap-0.5">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star key={i} size={16} className={i <= Math.floor(businessConfig.averageRating) ? 'fill-gold text-gold' : 'fill-gold/30 text-gold/30'} />
+                  ))}
+                </div>
+                <span className="text-white/80 text-sm font-medium">
+                  {businessConfig.averageRating} Stars · {businessConfig.reviewCount}+ Reviews
+                </span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">
-                {businessConfig.name}
+
+              <h1 className="text-4xl md:text-5xl font-black text-white leading-tight mb-4">
+                {businessConfig.name}: Expert Plumbing Contractors You Can Trust
               </h1>
-              <p className="text-xl md:text-2xl text-blue-200 font-semibold mb-3">
+              <p className="text-xl text-blue-200 font-semibold mb-4">
                 {businessConfig.tagline}
               </p>
-              <p className="text-blue-300 mb-8">
-                Serving {businessConfig.serviceAreas.slice(0, 5).join(', ')} and surrounding areas.
+              <p className="text-blue-300 leading-relaxed mb-8 max-w-lg">
+                Looking for a plumber you can actually rely on? We&apos;re your locally owned and
+                operated plumbing company serving {businessConfig.serviceAreas.slice(0, 3).join(', ')} and
+                surrounding areas. Whether it&apos;s a sewer line, a water heater, or a midnight
+                emergency — we&apos;re ready to take your call.
               </p>
+
               <div className="flex flex-wrap gap-3">
-                {['Licensed & Insured', 'Bonded', 'Satisfaction Guaranteed', '24/7 Emergency'].map((badge) => (
-                  <span key={badge} className="flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">
-                    <CheckCircle size={12} className="text-gold" />
-                    {badge}
-                  </span>
-                ))}
+                <a
+                  href={`tel:${businessConfig.phone.replace(/\D/g, '')}`}
+                  className="flex items-center gap-2 bg-gold text-primary-deeper font-black text-base px-6 py-3.5 rounded hover:bg-yellow-400 transition-colors shadow-lg"
+                >
+                  <Phone size={18} />
+                  Call Us Now
+                </a>
+                <Link
+                  href="/contact"
+                  className="flex items-center gap-2 border-2 border-white text-white font-bold text-base px-6 py-3.5 rounded hover:bg-white/10 transition-colors"
+                >
+                  <CalendarDays size={18} />
+                  Book Online
+                </Link>
               </div>
             </div>
 
-            {/* Right: Request Service Card */}
-            <div className="bg-white rounded-2xl p-8 shadow-2xl">
-              <h2 className="text-2xl font-black text-primary mb-1">Request Service</h2>
+            {/* Right: Lead form card */}
+            <div className="bg-white rounded-lg shadow-2xl p-8">
+              <h2 className="text-2xl font-black text-primary-deeper mb-1">Let Us Call You</h2>
               <p className="text-gray-500 text-sm mb-6">
-                We respond fast — most calls answered in under 60 minutes.
+                Fill out the form and a team member will call you shortly to schedule service.
               </p>
-              <a
-                href={`tel:${businessConfig.phone.replace(/\D/g, '')}`}
-                className="flex items-center gap-3 bg-gold text-primary font-black text-lg px-6 py-4 rounded-xl w-full justify-center mb-3 hover:bg-yellow-400 transition-colors shadow-md"
-              >
-                <Phone size={22} />
-                {businessConfig.phone}
-              </a>
-              <Link
-                href="/contact"
-                className="flex items-center gap-2 border-2 border-primary text-primary font-bold px-6 py-3 rounded-xl w-full justify-center hover:bg-blue-50 transition-colors"
-              >
-                Schedule Online
-              </Link>
-              <ul className="mt-6 space-y-2.5 border-t border-gray-100 pt-6">
-                {[
-                  'Same-day service available',
-                  'Upfront pricing — no surprises',
-                  'Licensed, insured & bonded',
-                  businessConfig.yearsInBusiness + '+ years serving the area',
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-gray-600">
-                    <CheckCircle size={15} className="text-gold flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+
+              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-600 mb-1">First Name *</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Maria"
+                      className="w-full border border-gray-300 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-600 mb-1">Last Name *</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Garcia"
+                      className="w-full border border-gray-300 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 mb-1">Phone Number *</label>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="(562) 555-0100"
+                    className="w-full border border-gray-300 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 mb-1">Service Needed</label>
+                  <select className="w-full border border-gray-300 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-gray-700">
+                    <option value="">Select a service...</option>
+                    {businessConfig.services.map((s) => (
+                      <option key={s.id} value={s.id}>{s.name}</option>
+                    ))}
+                    <option value="other">Other / Not Sure</option>
+                  </select>
+                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-primary text-white font-black py-3.5 rounded hover:bg-primary-dark transition-colors text-sm tracking-wide"
+                >
+                  Submit and Continue →
+                </button>
+              </form>
+
+              <p className="text-center text-xs text-gray-400 mt-4">
+                Or call us directly:{' '}
+                <a href={`tel:${businessConfig.phone.replace(/\D/g, '')}`} className="font-bold text-primary hover:underline">
+                  {businessConfig.phone}
+                </a>
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── SOCIAL PROOF BAR ─────────────────────────────────────────────────── */}
-      <section className="bg-primary-dark text-white py-5 border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-center gap-6 text-sm font-semibold">
-          <div className="flex items-center gap-2">
-            <div className="flex gap-0.5">
-              {[1,2,3,4,5].map(i => (
-                <Star key={i} size={16} className="fill-gold text-gold" />
-              ))}
-            </div>
-            <span>{businessConfig.averageRating} Stars on Google</span>
+      {/* ── WHY CHOOSE US ────────────────────────────────────────────────────── */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black text-primary-deeper">
+              Why Choose {businessConfig.name}?
+            </h2>
+            <p className="text-gray-500 mt-3 text-lg max-w-2xl mx-auto">
+              We&apos;re not a call center or a franchise — we&apos;re your neighbors, and we treat every job that way.
+            </p>
           </div>
-          <span className="hidden sm:block opacity-30">|</span>
-          <span>{businessConfig.reviewCount}+ Verified Reviews</span>
-          <span className="hidden sm:block opacity-30">|</span>
-          <span>{businessConfig.yearsInBusiness}+ Years in Business</span>
-          <span className="hidden sm:block opacity-30">|</span>
-          <span className="text-gold">Licensed · Insured · Bonded</span>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {whyChooseUs.map((item) => {
+              const Icon = item.icon
+              return (
+                <div key={item.title} className="border border-gray-100 rounded-lg p-6 hover:shadow-md transition-shadow text-center">
+                  <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon size={26} className="text-primary" />
+                  </div>
+                  <h3 className="font-black text-primary-deeper text-base mb-2">{item.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              )
+            })}
+          </div>
         </div>
       </section>
 
@@ -126,12 +196,14 @@ export default function HomePage() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="section-title">Our Plumbing Services</h2>
-            <p className="section-subtitle">
-              From emergency repairs to complete repiping — we handle it all.
+            <h2 className="text-3xl md:text-4xl font-black text-primary-deeper">
+              Plumbing &amp; Drain Services We Provide
+            </h2>
+            <p className="text-gray-500 mt-3 text-lg">
+              From emergency repairs to complete repiping — we handle every job, every size.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {businessConfig.services.slice(0, 8).map((service) => (
               <ServiceCard
                 key={service.id}
@@ -143,97 +215,29 @@ export default function HomePage() {
             ))}
           </div>
           <div className="text-center mt-8">
-            <Link href="/services" className="btn-secondary">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 border-2 border-primary text-primary font-bold px-6 py-3 rounded hover:bg-primary hover:text-white transition-colors"
+            >
               View All Services
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── HOW IT WORKS ─────────────────────────────────────────────────────── */}
-      <section className="py-16 bg-primary">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-3">How It Works</h2>
-          <p className="text-blue-200 mb-14 text-lg">Getting your plumbing fixed is simple.</p>
-          <div className="grid md:grid-cols-3 gap-10">
-            {howItWorks.map((item) => (
-              <div key={item.step} className="relative">
-                <div className="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg">
-                  <span className="text-primary font-black text-2xl">{item.step}</span>
-                </div>
-                <h3 className="font-black text-white text-lg mb-2">{item.title}</h3>
-                <p className="text-blue-200 text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-12">
-            <a
-              href={`tel:${businessConfig.phone.replace(/\D/g, '')}`}
-              className="inline-flex items-center gap-3 bg-gold text-primary font-black text-lg px-8 py-4 rounded-xl hover:bg-yellow-400 transition-colors shadow-lg"
-            >
-              <Phone size={22} />
-              Call Now — {businessConfig.phone}
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ── WHY CHOOSE US ─────────────────────────────────────────────────────── */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="section-title mb-4">Why Homeowners Trust {businessConfig.name}</h2>
-              <p className="text-gray-500 mb-8">
-                We&apos;re not a franchise or call center — we&apos;re your neighbors. When you call us,
-                you&apos;re talking to the same team that will show up at your door.
-              </p>
-              <div className="space-y-5">
-                {whyChooseUs.map((item) => {
-                  const Icon = item.icon
-                  return (
-                    <div key={item.title} className="flex gap-4">
-                      <div className="w-11 h-11 bg-gold/10 rounded-xl flex items-center justify-center flex-shrink-0 border border-gold/20">
-                        <Icon size={20} className="text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-black text-primary">{item.title}</h3>
-                        <p className="text-gray-500 text-sm mt-0.5">{item.desc}</p>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-              <div className="mt-8">
-                <CTAButton variant="call" size="lg" />
-              </div>
-            </div>
-            <div className="relative h-[480px] rounded-2xl overflow-hidden shadow-xl">
-              <Image
-                src="/handshake.png"
-                alt="Plumber shaking hands with satisfied homeowner"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── TESTIMONIALS ─────────────────────────────────────────────────────── */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="flex justify-center gap-1 mb-3">
-              {[1,2,3,4,5].map(i => (
-                <Star key={i} size={24} className="fill-gold text-gold" />
+              {[1, 2, 3, 4, 5].map((i) => (
+                <Star key={i} size={22} className="fill-gold text-gold" />
               ))}
             </div>
-            <h2 className="section-title">
+            <h2 className="text-3xl md:text-4xl font-black text-primary-deeper">
               {businessConfig.averageRating} Stars · {businessConfig.reviewCount}+ Reviews
             </h2>
-            <p className="section-subtitle">Here&apos;s what our customers say</p>
+            <p className="text-gray-500 mt-3 text-lg">What our customers say</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {businessConfig.testimonials.map((t) => (
@@ -243,20 +247,35 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SERVICE AREAS ─────────────────────────────────────────────────────── */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── FAQ ──────────────────────────────────────────────────────────────── */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="section-title">Areas We Serve</h2>
-            <p className="section-subtitle">Professional plumbing services throughout the region</p>
+            <h2 className="text-3xl md:text-4xl font-black text-primary-deeper">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-gray-500 mt-3 text-lg">
+              Everything you need to know before calling a plumber.
+            </p>
+          </div>
+          <FAQ />
+        </div>
+      </section>
+
+      {/* ── SERVICE AREAS ─────────────────────────────────────────────────────── */}
+      <section className="py-14 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-black text-primary-deeper">Find a {businessConfig.name} Near Me</h2>
+            <p className="text-gray-500 mt-2">Serving the greater Whittier area and surrounding communities</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
             {businessConfig.serviceAreas.map((area) => (
               <div
                 key={area}
-                className="flex items-center gap-1.5 bg-blue-50 border border-blue-100 rounded-lg px-3 py-2 text-sm font-semibold text-primary"
+                className="flex items-center gap-1.5 bg-blue-50 border border-blue-100 rounded px-3 py-2.5 text-sm font-semibold text-primary hover:bg-primary hover:text-white hover:border-primary transition-colors cursor-default"
               >
-                <MapPin size={12} className="flex-shrink-0 text-gold" />
+                <MapPin size={12} className="flex-shrink-0" />
                 {area}
               </div>
             ))}
@@ -265,27 +284,28 @@ export default function HomePage() {
       </section>
 
       {/* ── BOTTOM CTA ────────────────────────────────────────────────────────── */}
-      <section className="py-16 bg-primary-dark">
-        <div className="max-w-3xl mx-auto px-4 text-center">
+      <section className="py-16 bg-primary">
+        <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
             Ready to Get Your Plumbing Fixed?
           </h2>
           <p className="text-blue-200 mb-8 text-lg">
-            Call now for same-day service or schedule online. Upfront pricing, no surprises.
+            Call now or book online. Upfront pricing, same-day service, satisfaction guaranteed.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={`tel:${businessConfig.phone.replace(/\D/g, '')}`}
-              className="inline-flex items-center gap-3 bg-gold text-primary font-black text-lg px-8 py-4 rounded-xl hover:bg-yellow-400 transition-colors shadow-lg justify-center"
+              className="inline-flex items-center gap-3 bg-gold text-primary-deeper font-black text-lg px-8 py-4 rounded hover:bg-yellow-400 transition-colors shadow-lg justify-center"
             >
               <Phone size={22} />
               {businessConfig.phone}
             </a>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 border-2 border-white text-white font-bold px-8 py-4 rounded-xl hover:bg-white/10 transition-colors justify-center"
+              className="inline-flex items-center gap-2 border-2 border-white text-white font-bold px-8 py-4 rounded hover:bg-white/10 transition-colors justify-center"
             >
-              Schedule Online
+              <CalendarDays size={20} />
+              Book Online
             </Link>
           </div>
         </div>

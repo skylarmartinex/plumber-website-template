@@ -13,21 +13,21 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-gold text-primary font-bold rounded-lg hover:bg-yellow-400 transition-colors duration-200 shadow-md hover:shadow-lg;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-gold text-primary-deeper font-bold rounded hover:bg-yellow-400 transition-colors duration-200 shadow-md hover:shadow-lg;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-primary font-bold rounded-lg border-2 border-gold hover:bg-yellow-50 transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-primary font-bold rounded border-2 border-primary hover:bg-primary hover:text-white transition-colors duration-200;
   }
-  .btn-emergency {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-red-700 transition-colors duration-200 shadow-md hover:shadow-lg;
+  .btn-outline-gold {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-gold text-gold font-bold rounded hover:bg-gold hover:text-primary-deeper transition-colors duration-200;
   }
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-primary;
+    @apply text-3xl md:text-4xl font-black text-primary-deeper;
   }
   .section-subtitle {
     @apply text-lg text-gray-500 mt-3;
   }
   .card {
-    @apply bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200 p-6;
+    @apply bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200 p-6;
   }
 }

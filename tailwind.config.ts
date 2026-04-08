@@ -9,10 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#1b3554',
-        'primary-dark': '#0f2035',
-        secondary: '#407ec9',
-        gold: '#f5c200',
+        primary: '#407ec9',       // Mr. Rooter blue
+        'primary-dark': '#2d598f', // darker blue for hover/accents
+        'primary-deeper': '#1b3554', // dark navy for footer/overlays
+        gold: '#f5c200',           // Mr. Rooter gold
+        'gold-dark': '#e8b52e',
         accent: '#dc2626',
         'accent-orange': '#ea580c',
       },
