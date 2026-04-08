@@ -3,7 +3,7 @@ import { businessConfig } from '@/config/business'
 import { CTAButton } from '@/components/CTAButton'
 import {
   AlertCircle, Waves, Flame, Search, GitBranch,
-  ArrowDownCircle, Home, Droplets, CheckCircle
+  ArrowDownCircle, Home, Droplets, CheckCircle, type LucideIcon
 } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: `Full-service plumbing from ${businessConfig.name}. Emergency plumbing, drain cleaning, water heaters, leak detection, repiping, sewer repair and more. Serving ${businessConfig.serviceAreas.slice(0,3).join(', ')}.`,
 }
 
-const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+const iconMap: Record<string, LucideIcon> = {
   AlertCircle, Waves, Flame, Search, GitBranch,
   ArrowDownCircle, Home, Droplets,
 }

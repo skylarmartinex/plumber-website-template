@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import {
   AlertCircle, Waves, Flame, Search, GitBranch,
-  ArrowDownCircle, Home, Droplets, ChevronRight
+  ArrowDownCircle, Home, Droplets, ChevronRight, type LucideIcon
 } from 'lucide-react'
 
-const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+const iconMap: Record<string, LucideIcon> = {
   AlertCircle, Waves, Flame, Search, GitBranch,
   ArrowDownCircle, Home, Droplets,
 }
