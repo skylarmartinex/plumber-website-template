@@ -1,62 +1,62 @@
 export const businessConfig = {
   // ─── BUSINESS INFO ──────────────────────────────────────────────────────────
-  name: "ABC Plumbing & Drain",
-  tagline: "Your Trusted Local Plumber",
-  phone: "(555) 123-4567",
-  email: "info@abcplumbing.com",
-  address: "123 Main St, Anytown, CA 90210",
-  licenseNumber: "LIC# C-36-123456",
-  formSubmitEmail: "info@abcplumbing.com", // FormSubmit.co email
+  name: "Ben's Plumbing & Rooter",
+  tagline: "Whittier's Trusted Plumber Since 2009",
+  phone: "(562) 693-7926",
+  email: "info@bensplumbingandrooter.com",
+  address: "8540 La Entrada Ave, Whittier, CA 90605",
+  licenseNumber: "Licensed · Insured · Bonded",
+  formSubmitEmail: "info@bensplumbingandrooter.com",
 
   // ─── HOURS ──────────────────────────────────────────────────────────────────
   hours: {
-    weekday: "Mon–Fri: 7AM–7PM",
-    weekend: "Sat: 8AM–5PM, Sun: Emergency Only",
-    emergency: "24/7 Emergency Service Available",
+    weekday: "Mon–Fri: Open 24 Hours",
+    weekend: "Sat–Sun: Open 24 Hours",
+    emergency: "24/7 Emergency Service — 30–40 Min Response",
   },
 
   // ─── SERVICE AREAS ──────────────────────────────────────────────────────────
   serviceAreas: [
-    "Anytown",
-    "Riverside",
-    "Westfield",
-    "Lakeview",
-    "Northpark",
-    "Eastside",
-    "Maplewood",
-    "Hillcrest",
-    "Clearwater",
-    "Sunridge",
-    "Oak Park",
-    "Valley Glen",
+    "Whittier",
+    "La Mirada",
+    "Norwalk",
+    "Downey",
+    "Pico Rivera",
+    "Santa Fe Springs",
+    "La Habra",
+    "Hacienda Heights",
+    "Industry",
+    "La Puente",
+    "Montebello",
+    "East Los Angeles",
   ],
 
   // ─── SOCIAL PROOF ───────────────────────────────────────────────────────────
-  yearsInBusiness: 20,
-  reviewCount: 243,
-  averageRating: 4.9,
+  yearsInBusiness: 17,
+  reviewCount: 47,
+  averageRating: 4.5,
 
   // ─── TESTIMONIALS ───────────────────────────────────────────────────────────
   testimonials: [
     {
-      name: "Sarah M.",
-      location: "Anytown",
+      name: "Maria G.",
+      location: "Whittier",
       review:
-        "Called at 10pm for a burst pipe — they were at my house in under an hour. Fixed it fast, priced fairly. These guys are the real deal.",
+        "Ben has been my plumber for almost 20 years. He's honest, shows up when he says he will, and never overcharges. I won't call anyone else.",
       rating: 5,
     },
     {
-      name: "James T.",
-      location: "Westfield",
+      name: "Robert T.",
+      location: "Norwalk",
       review:
-        "Used ABC Plumbing twice now. Both times: on time, upfront pricing, no surprises on the bill. Highly recommend for any plumbing work.",
+        "Called at midnight for a burst pipe. Ben's team was at my house in 35 minutes and had everything fixed before 2am. Incredible service.",
       rating: 5,
     },
     {
-      name: "Linda R.",
-      location: "Lakeview",
+      name: "Sandra L.",
+      location: "La Mirada",
       review:
-        "Best plumber in the area. Fixed our water heater same day and saved us thousands by repairing instead of replacing. Family-owned, honest business.",
+        "Family-owned business that treats you like family. Fixed our slab leak quickly and worked directly with our home insurance. Highly recommend.",
       rating: 5,
     },
   ],
@@ -64,19 +64,19 @@ export const businessConfig = {
   // ─── TEAM ───────────────────────────────────────────────────────────────────
   team: [
     {
-      name: "Mike Johnson",
+      name: "Ben Hernandez",
       title: "Owner & Master Plumber",
-      bio: "Mike founded ABC Plumbing 20 years ago with one goal: treat every customer like family. He's a licensed master plumber with over 25 years of experience.",
+      bio: "Ben grew up in a family of plumbers and has been in the trade since age 16 — that's 25+ years of hands-on experience. He founded Ben's Plumbing & Rooter to bring honest, reliable plumbing to the Whittier community.",
     },
     {
-      name: "Dave Wilson",
-      title: "Lead Plumber",
-      bio: "Dave specializes in emergency repairs and water heater installations. Known for his fast response and clean work.",
+      name: "Sandi Hernandez",
+      title: "Co-Owner & Operations",
+      bio: "Sandi keeps everything running smoothly behind the scenes — scheduling, customer follow-ups, and making sure every job meets the Ben's Plumbing standard.",
     },
     {
-      name: "Carlos Rivera",
-      title: "Service Plumber",
-      bio: "Carlos handles residential drain cleaning, leak detection, and general plumbing repairs. Friendly, thorough, and detail-oriented.",
+      name: "The Ben's Team",
+      title: "Licensed Service Plumbers",
+      bio: "Our fully licensed and insured plumbers are trained to Ben's standards: fast, clean, honest, and respectful of your home.",
     },
   ],
 
@@ -199,7 +199,7 @@ export const businessConfig = {
   // ─── GOOGLE MAPS ────────────────────────────────────────────────────────────
   // Replace with your client's address for the embed
   googleMapsEmbedUrl:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423283.42891905433!2d-118.69192190890698!3d34.02016130652397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fbe01b2f4e3f6!2sLos%20Angeles%2C%20CA!5e0!3m2!1sen!2sus!4v1703000000000!5m2!1sen!2sus",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26452.953125!2d-118.03318!3d33.97945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2d17c98c6e3b1%3A0x1234567890abcdef!2sWhittier%2C%20CA%2090605!5e0!3m2!1sen!2sus!4v1703000000000!5m2!1sen!2sus",
 }
 
 export type BusinessConfig = typeof businessConfig
