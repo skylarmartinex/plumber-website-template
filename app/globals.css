@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -15,21 +13,21 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors duration-200 shadow-md hover:shadow-lg;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-gold text-primary font-bold rounded-lg hover:bg-yellow-400 transition-colors duration-200 shadow-md hover:shadow-lg;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-primary font-semibold rounded-lg border-2 border-primary hover:bg-blue-50 transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-primary font-bold rounded-lg border-2 border-gold hover:bg-yellow-50 transition-colors duration-200;
   }
   .btn-emergency {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-red-700 transition-colors duration-200 shadow-md hover:shadow-lg;
   }
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-gray-900;
+    @apply text-3xl md:text-4xl font-bold text-primary;
   }
   .section-subtitle {
-    @apply text-lg text-gray-600 mt-3;
+    @apply text-lg text-gray-500 mt-3;
   }
   .card {
-    @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200 p-6;
+    @apply bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200 p-6;
   }
 }
