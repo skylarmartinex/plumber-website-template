@@ -20,8 +20,12 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-primary-dark py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <section className="relative bg-primary-dark py-16 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{ backgroundImage: "url('/services.jpg')" }}
+        />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Our Plumbing Services</h1>
           <p className="text-blue-200 text-lg mb-6">
             Professional, reliable plumbing for every job — big or small.

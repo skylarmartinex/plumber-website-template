@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { CheckCircle, Award, Users, Star } from 'lucide-react'
 import { businessConfig } from '@/config/business'
 import { CTAButton } from '@/components/CTAButton'
@@ -54,18 +55,29 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { value: businessConfig.yearsInBusiness + '+', label: 'Years in Business' },
-                { value: businessConfig.reviewCount + '+', label: 'Happy Customers' },
-                { value: businessConfig.averageRating, label: 'Star Rating' },
-                { value: '24/7', label: 'Emergency Service' },
-              ].map((stat) => (
-                <div key={stat.label} className="bg-blue-50 rounded-xl p-5 text-center">
-                  <div className="text-3xl font-bold text-primary mb-1">{stat.value}</div>
-                  <div className="text-sm text-gray-600">{stat.label}</div>
-                </div>
-              ))}
+            <div className="space-y-4">
+              <div className="relative h-64 rounded-2xl overflow-hidden">
+                <Image
+                  src="/about.jpg"
+                  alt="Friendly plumber giving thumbs up"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { value: businessConfig.yearsInBusiness + '+', label: 'Years in Business' },
+                  { value: businessConfig.reviewCount + '+', label: 'Happy Customers' },
+                  { value: businessConfig.averageRating, label: 'Star Rating' },
+                  { value: '24/7', label: 'Emergency Service' },
+                ].map((stat) => (
+                  <div key={stat.label} className="bg-blue-50 rounded-xl p-5 text-center">
+                    <div className="text-3xl font-bold text-primary mb-1">{stat.value}</div>
+                    <div className="text-sm text-gray-600">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

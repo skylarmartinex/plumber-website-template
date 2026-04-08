@@ -21,8 +21,12 @@ export default function EmergencyPage() {
   return (
     <>
       {/* Hero — urgent red */}
-      <section className="bg-gradient-to-b from-red-900 to-red-800 py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <section className="relative bg-gradient-to-b from-red-900 to-red-800 py-16 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-15"
+          style={{ backgroundImage: "url('/emergency.jpg')" }}
+        />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-6">
             <span className="w-2 h-2 bg-red-400 rounded-full animate-pulse" />
             <span className="text-white font-semibold text-sm">We Answer 24 Hours a Day, 7 Days a Week</span>

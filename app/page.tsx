@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import {
   Phone, CheckCircle, Star, Users, Clock, DollarSign, Award, MapPin,
@@ -136,34 +137,45 @@ export default function HomePage() {
                 })}
               </div>
             </div>
-            <div className="bg-primary rounded-2xl p-8 text-white">
-              <h3 className="text-2xl font-bold mb-2">Need a Plumber Today?</h3>
-              <p className="text-blue-200 mb-6">
-                Same-day service available. Emergency response in under 60 minutes.
-              </p>
-              <div className="space-y-3">
-                <a
-                  href={`tel:${businessConfig.phone.replace(/\D/g, '')}`}
-                  className="flex items-center gap-3 bg-white text-primary font-bold rounded-lg px-5 py-3 hover:bg-blue-50 transition-colors"
-                >
-                  <Phone size={20} />
-                  {businessConfig.phone}
-                </a>
-                <Link
-                  href="/contact"
-                  className="flex items-center gap-3 border border-blue-400 text-white font-semibold rounded-lg px-5 py-3 hover:bg-primary-dark transition-colors justify-center"
-                >
-                  Schedule Online
-                </Link>
+            <div className="space-y-6">
+              <div className="relative h-64 rounded-2xl overflow-hidden">
+                <Image
+                  src="/handshake.jpg"
+                  alt="Plumber shaking hands with satisfied homeowner"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
-              <ul className="mt-6 space-y-2">
-                {['No trip charge to give estimates', 'Upfront pricing before we start', 'Clean, uniformed technicians', 'Fully stocked trucks'].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-blue-200">
-                    <CheckCircle size={14} className="text-secondary" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <div className="bg-primary rounded-2xl p-8 text-white">
+                <h3 className="text-2xl font-bold mb-2">Need a Plumber Today?</h3>
+                <p className="text-blue-200 mb-6">
+                  Same-day service available. Emergency response in under 60 minutes.
+                </p>
+                <div className="space-y-3">
+                  <a
+                    href={`tel:${businessConfig.phone.replace(/\D/g, '')}`}
+                    className="flex items-center gap-3 bg-white text-primary font-bold rounded-lg px-5 py-3 hover:bg-blue-50 transition-colors"
+                  >
+                    <Phone size={20} />
+                    {businessConfig.phone}
+                  </a>
+                  <Link
+                    href="/contact"
+                    className="flex items-center gap-3 border border-blue-400 text-white font-semibold rounded-lg px-5 py-3 hover:bg-primary-dark transition-colors justify-center"
+                  >
+                    Schedule Online
+                  </Link>
+                </div>
+                <ul className="mt-6 space-y-2">
+                  {['No trip charge to give estimates', 'Upfront pricing before we start', 'Clean, uniformed technicians', 'Fully stocked trucks'].map((item) => (
+                    <li key={item} className="flex items-center gap-2 text-sm text-blue-200">
+                      <CheckCircle size={14} className="text-secondary" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
