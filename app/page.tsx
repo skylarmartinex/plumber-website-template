@@ -140,7 +140,7 @@ export default function HomePage() {
             <div className="space-y-6">
               <div className="relative h-64 rounded-2xl overflow-hidden">
                 <Image
-                  src="/handshake.jpg"
+                  src="/handshake.png"
                   alt="Plumber shaking hands with satisfied homeowner"
                   fill
                   className="object-cover"
