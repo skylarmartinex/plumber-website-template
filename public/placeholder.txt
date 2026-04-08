@@ -1,0 +1,9 @@
+Place hero-bg.jpg and logo.png in this directory.
+
+hero-bg.jpg: A high-quality photo of a plumber at work (1920x1080 recommended)
+logo.png: Client's logo (transparent background, ~200x60px)
+favicon.ico: Client's favicon
+
+Free hero image sources:
+- Unsplash: https://unsplash.com/s/photos/plumber
+- Pexels: https://pexels.com/search/plumber
