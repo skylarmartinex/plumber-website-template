@@ -93,12 +93,37 @@ Mr. Rooter has a strong emergency page with:
 | `components/Footer.tsx` | Add social icons |
 | `app/services/page.tsx` | Image-based cards |
 
-## Assets Needed
+## Assets Available — C:\Users\marti\Downloads\Plumbing Assets\
 
-| Asset | Use | Source |
-|-------|-----|--------|
-| `hero-video.mp4` | Hero background video | Adobe Stock, Pexels, Mixkit (free) |
-| Per-service photos | Service card backgrounds | Adobe Stock |
+All assets are already downloaded. MOV files need to be converted to MP4 before use (QuickTime > File > Export As > 1080p, or VLC).
+
+### Videos (copy to /public/ after converting to .mp4)
+| File | Size | Recommended Use |
+|------|------|-----------------|
+| `hero_walking_video.mov` | 51MB | **Hero background** (best size for web) |
+| `working_pipe_video.mov` | 72MB | Hero background (alt option) |
+| `plumbers_van.mov` | 286MB | Skip — too large for web |
+| `AdobeStock_1803563542.mov` | 675MB | Skip — too large for web |
+| `AdobeStock_514647309.mov` | 724MB | Skip — too large for web |
+
+### Images (copy to /public/ with clean names)
+| File | Recommended filename | Recommended Use |
+|------|----------------------|-----------------|
+| `Hero_image.jpeg` | `hero-bg.jpg` | Hero fallback image (if video fails) |
+| `Plumber_handshake.png` | `handshake.png` | Why Choose Us section ✅ already wired |
+| `Plumber_under_sink.jpeg` | `services.jpg` | Services section / services page hero |
+| `Plumber_sink_consult.jpeg` | `about.jpg` | About page story section |
+| `ceiling_trouble.jpeg` | `emergency.jpg` | Emergency page hero |
+| `AdobeStock_1660295530.jpeg` | — | Extra — assign as needed |
+| `AdobeStock_1680639567.jpeg` | — | Extra — assign as needed |
+| `AdobeStock_331634841.jpeg` | — | Extra — assign as needed |
+| `Bens.png` | `logo-bens.png` | Ben's Plumbing logo (demo branch only) |
+
+### Start of Next Session — Asset Setup Steps
+1. Convert `hero_walking_video.mov` → `hero-video.mp4` (QuickTime or VLC)
+2. Copy all images to `/public/` with the clean names above
+3. Run: `git add public/ && git commit -m "assets: add stock images and hero video" && git push`
+4. Then proceed with code changes below
 
 ## Color Reference (Mr. Rooter)
 - Primary navy: `#1b3554`
@@ -108,8 +133,9 @@ Mr. Rooter has a strong emergency page with:
 - Emergency red: `#dc2626`
 
 ## Start Next Session With
-1. Fetch mrrooter.com to re-examine (use Vercel MCP web_fetch_vercel_url or screenshot tool)
-2. Get hero video into /public/
-3. Implement video background in hero
-4. Implement image-based service cards
+1. Do asset setup steps above (convert video, copy images, push)
+2. Wire all images into the correct pages (hero-bg, services, about, emergency)
+3. Implement video background in hero (`hero-video.mp4`)
+4. Implement image-based service cards using the stock photos
 5. Update service areas section to include map embed
+6. Fetch mrrooter.com screenshot for final comparison
