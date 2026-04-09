@@ -67,7 +67,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden min-h-[640px] flex items-center">
         {/* Background image */}
         <Image
-          src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1600&q=80"
+          src="/hero-bg.jpg"
           alt="Plumber at work"
           fill
           className="object-cover object-center"
@@ -223,7 +223,7 @@ export default function HomePage() {
             {/* Photo */}
             <div className="relative h-[420px] rounded-xl overflow-hidden shadow-xl">
               <Image
-                src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=80"
+                src="/about-plumber.jpg"
                 alt="Our plumbing team"
                 fill
                 className="object-cover object-center"
@@ -364,8 +364,15 @@ export default function HomePage() {
       </section>
 
       {/* ── EMERGENCY CTA BAND ────────────────────────────────────────────────── */}
-      <section className="py-16 bg-primary">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <section className="relative py-16 overflow-hidden">
+        <Image
+          src="/emergency.jpg"
+          alt="Plumbing emergency"
+          fill
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-primary/90" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <p className="text-gold font-bold uppercase tracking-widest text-sm mb-3">24/7 Emergency Service</p>
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
             Plumbing Emergency? We&apos;re On Our Way.
@@ -394,3 +401,4 @@ export default function HomePage() {
     </>
   )
 }
+
