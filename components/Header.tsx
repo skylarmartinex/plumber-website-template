@@ -39,7 +39,7 @@ export function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gold rounded flex items-center justify-center flex-shrink-0">
-                <span className="text-primary-deeper font-black text-xl leading-none">B</span>
+                <span className="text-primary-deeper font-black text-xl leading-none">{businessConfig.name.charAt(0)}</span>
               </div>
               <div>
                 <div className="font-black text-white text-base leading-tight">
